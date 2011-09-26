@@ -1,5 +1,5 @@
 ---
-production:
+<%= ENV["RACK_ENV"] %>:
   error_collector:
     capture_source: true
     enabled: true
