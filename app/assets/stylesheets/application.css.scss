@@ -1,0 +1,161 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "compass/css3";
+@import "compass/utilities/general/clearfix";
+@import "compass/css3/text-shadow";
+
+body {
+  background-color: #b3936a;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: asset-url('background.jpg', image);
+}
+
+#container {
+  width: 760px;
+  margin: 0 auto;
+}
+
+header {
+  h1 {
+    background-image: asset-url('logo.png', image);
+    text-indent: -3000em;
+    width: 149px;
+    height: 148px;
+    float: left;
+  }
+
+  nav ul {
+    list-style: none;
+    margin: 30px 0 0;
+    padding: 0;
+    width: 610px;
+    font-family: museo;
+    font-weight: 700;
+    font-size: 24pt;
+    color: #fff;
+    float: left;
+
+    li {
+      float: left;
+      width: 33%;
+      padding: 20px 0;
+      text-align: center;
+
+      a {
+        color: #fff;
+        text-decoration: none;
+        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+
+        &:hover {
+          text-decoration: underline;
+          text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+        }
+      }
+    }
+
+    @include clearfix;
+  }
+}
+
+section.content {
+  clear: both;
+  background: #351d18;
+  background: rgba(53, 29, 24, 0.9);
+  padding: 0 0 20px 0;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+
+  h1, h2 {
+    font-family: museo;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+    margin: 20px 0 10px 20px;
+  }
+
+  h1 {
+    font-size: 36pt;
+  }
+  h2 {
+    font-size: 24pt;
+  }
+  p {
+    margin: 10px 20px 10px 20px;
+    color: #fff;
+    font-family: verdana;
+    line-height: 1.4em;
+  }
+}
+
+section.banner {
+  padding: 230px 0 0;
+
+  h1, h2 {
+    font-family: museo;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+    background: rgba(0,0,0,0.4);
+    margin: 0;
+    padding: 5px 20px;
+  }
+
+  h1 {
+    font-size: 36pt;
+  }
+
+  h2 {
+    font-size: 24pt;
+    padding-bottom: 20px;
+    line-height: 1.4em;
+
+    a {
+      color: #ede0ca;
+      font-weight: 900;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &.twoforone {
+    background: asset-url('cups.jpg', image) left bottom;
+    h2 {
+      line-height: 50px;
+    }
+    span.friend {
+      background-repeat: no-repeat;
+      padding-left: 60px;
+      display: block;
+      float: left;
+      line-height: 50px;
+      margin-right: 0.4em;
+    }
+  }
+  &.liked {
+    background: asset-url('heart.jpg', image) left bottom;
+  }
+  &.roastoftheweek {
+    background: asset-url('beans.jpg', image) left bottom;
+  }
+}
+
+ul.people {
+  margin: 20px;
+  padding: 0;
+
+  li {
+    background-repeat: no-repeat;
+    font-family: verdana;
+    color: #fff;
+    padding: 10px 0 0 60px;
+    display: block;
+    height: 50px;
+    margin: 5px;
+  }
+}

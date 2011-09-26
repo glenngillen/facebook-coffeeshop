@@ -1,0 +1,27 @@
+- if current_user.friends_using_app.sample
+  = render :partial => "/shared/friend_offer", :object => current_user.friends_using_app.sample
+- elsif current_user.liked?(root_url)
+  = render :partial => "/shared/liked_offer"
+- else
+  = render :partial => "/shared/roast_of_the_week"
+
+%h1 Welcome to Starzucks Coffee
+%p
+  Starzucks Coffee is an independent, but VC owned, coffee company based
+  in San Francisco. To us, a good coffee is one you can share shamelessly
+  with your friends. One you can gloat about, and ultimately convince them
+  to share it with you.
+%p
+  We aim to make drinking coffee the most social experience possible, so that
+  you can actually spend some time interacting in real life with all these
+  people you've added as friends on Facebook.
+
+- unless @people.empty?
+  %h1 Meet some of the regulars
+  %p
+    The people below also love Starzucks Coffee, why don't you introduce
+    yourself next time you see them in:
+  %ul.people
+    - @people.each do |person|
+      %li{ :style => "background-image: url(#{facebook_profile_img_url(person["id"])});" }
+        = person["name"]

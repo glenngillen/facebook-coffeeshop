@@ -1,0 +1,9 @@
+%section.banner.twoforone
+  %h1 Shout your friends on us!
+  %h2
+    %span.friend{ :style => "background-image: url(#{friend_offer["pic_square"]});" }
+      #{friend_offer["name"]}
+    drinks here too, why not buy them a cup with
+    = succeed("?") do
+      %a{ :href => "#" }
+        this 2&ndash;for&ndash;1 voucher

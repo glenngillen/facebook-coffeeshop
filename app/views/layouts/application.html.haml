@@ -1,0 +1,31 @@
+!!!
+%html
+  %head
+    %title= @page_title || "Starzucks Coffee"
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    = javascript_include_tag "//use.typekit.com/ndx2pqj.js"
+    = csrf_meta_tags
+    :javascript
+      try{Typekit.load();}catch(e){}
+    %meta{ :property => "og:title", :content => "#{@page_title || "Starzucks Coffee"}" }
+    %meta{ :property => "og:type", :content => "cafe" }
+    %meta{ :property => "og:url", :content => "#{url_for}" }
+    %meta{ :property => "og:image", :content => "#{root_url}#{image_path("assets/logo.square.png")}" }
+    %meta{ :property => "og:site_name", :content => "Starzucks" }
+    %meta{ :property => "fb:app_id", :content => "#{@app.id}" }
+
+  %body
+    #container
+      %header
+        %h1 Starzucks Coffee
+        %nav
+          %ul
+            %li
+              %a{ :href => "#" } Our Coffee
+            %li
+              %a{ :href => "#" } The Café
+            %li
+              %a{ :href => "#" } Shop Online
+      %section.content
+        = yield
