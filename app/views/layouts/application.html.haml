@@ -8,20 +8,42 @@
     :javascript
       TypekitConfig = {
           kitId: 'zsn6vjm'
+      };
+      (function() {
+        var tk = document.createElement('script');
+        tk.src = '//use.typekit.com/' + TypekitConfig.kitId + '.js';
+        tk.type = 'text/javascript';
+        tk.async = 'true';
+        tk.onload = tk.onreadystatechange = function() {
+          var rs = this.readyState;
+          if (rs && rs != 'complete' && rs != 'loaded') return;
+          try { Typekit.load(TypekitConfig); } catch (e) {}
         };
-        (function() {
-          var tk = document.createElement('script');
-          tk.src = '//use.typekit.com/' + TypekitConfig.kitId + '.js';
-          tk.type = 'text/javascript';
-          tk.async = 'true';
-          tk.onload = tk.onreadystatechange = function() {
-            var rs = this.readyState;
-            if (rs && rs != 'complete' && rs != 'loaded') return;
-            try { Typekit.load(TypekitConfig); } catch (e) {}
-          };
-          var s = document.getElementsByTagName('script')[0];
-          s.parentNode.insertBefore(tk, s);
-        })();
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(tk, s);
+      })();
+
+      window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '#{ENV["FACEBOOK_APP_ID"]', // App ID
+            channelURL : '/channel.html', // Channel File
+            status     : true, // check login status
+            cookie     : true, // enable cookies to allow the server to access the session
+            oauth      : true, // enable OAuth 2.0
+            xfbml      : true  // parse XFBML
+          });
+
+          // Additional initialization code here
+        };
+
+        // Load the SDK Asynchronously
+        (function(d){
+          var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+          js = d.createElement('script'); js.id = id; js.async = true;
+          js.src = "//connect.facebook.net/en_US/all.js";
+          d.getElementsByTagName('head')[0].appendChild(js);
+      }(document));
+
     %meta{ :property => "og:title", :content => "#{@page_title || "Starzucks Coffee"}" }
     %meta{ :property => "og:type", :content => "cafe" }
     %meta{ :property => "og:url", :content => "#{url_for}" }
