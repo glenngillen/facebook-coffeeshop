@@ -1,6 +1,6 @@
-- if current_user.friends_using_app.sample
+- if current_user && current_user.friends_using_app.sample
   = render :partial => "/shared/friend_offer", :object => current_user.friends_using_app.sample
-- elsif current_user.liked?(root_url)
+- elsif current_user && current_user.liked?(root_url)
   = render :partial => "/shared/liked_offer"
 - else
   = render :partial => "/shared/roast_of_the_week"

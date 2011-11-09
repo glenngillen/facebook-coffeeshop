@@ -1,0 +1,13 @@
+- content_for :meta do
+  %meta{ :property => "fb:app_id", :content => "#{ENV["FACEBOOK_APP_ID"]}" }
+  %meta{ :property => "og:title", :content => "Coffee" }
+  %meta{ :property => "og:image", :content => "#{root_url}#{image_path(:only_path => false)}" }
+  %meta{ :property => "og:determiner", :content => "a" }
+  %meta{ :property => "og:url", :content => "#{coffees_url}" }
+%ul.coffees
+  - @coffees.each do |coffee|
+    %li
+      %h1= link_to coffee[:name], coffee_path(coffee[:name])
+      %h2= coffee[:price]
+
+

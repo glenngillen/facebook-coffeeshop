@@ -26,4 +26,9 @@ class AuthenticationController < ApplicationController
       render :status => :unauthorized
     end
   end
+
+  def logout
+    session[:at] = nil
+    redirect_to '/'
+  end
 end

@@ -37,7 +37,6 @@ class ApplicationController < ActionController::Base
 
   def authenticate!
     if session[:at].blank?
-      redirect_to auth_path('facebook')
     else
       current_user
     end
@@ -57,6 +56,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
+    require 'ruby-debug'; debugger
     @current_user ||= User.new(Mogli::User.find("me", client))
   end
 

@@ -59,10 +59,15 @@
         %nav
           %ul
             %li
-              %a{ :href => "#" } Our Coffee
+              %a{ :href => "/coffees" } Our Coffee
             %li
               %a{ :href => "#" } The Café
-            %li
-              %a{ :href => "#" } Shop Online
+            - if session[:at]
+              %li
+                %a{ :href => logout_path } Log out
+            - else
+              %li
+                %a{ :href => auth_path("facebook") } Log in
+
       %section.content
         = yield

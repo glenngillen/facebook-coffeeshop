@@ -1,0 +1,14 @@
+- content_for :meta do
+  %meta{ :property => "og:title", :content => "#{@coffee[:name]}" }
+  %meta{ :property => "og:determiner", :content => "an" }
+  %meta{ :property => "fb:app_id", :content => "#{ENV["FACEBOOK_APP_ID"]}" }
+  %meta{ :property => "og:image", :content => "#{root_url}#{image_path(:only_path => false)}" }
+  %meta{ :property => "og:url", :content => "#{url_for(:only_path => false)}" }
+  %meta{ :property => "og:type", :content => "#{ENV["FACEBOOK_APP_NAMESPACE"]}:beverage" }
+  %meta{ :property => "#{ENV["FACEBOOK_APP_NAMESPACE"]}:category", :content => "#{coffees_url}" }
+
+%h1= @coffee[:name]
+%h2= @coffee[:price]
+%p= @coffee[:description]
+- form_tag :url => coffee_path(@coffee[:name]), :html => { :method => :put } do
+  = submit_tag "press"
