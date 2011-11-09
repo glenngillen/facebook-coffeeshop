@@ -46,7 +46,7 @@
 
     %meta{ :property => "og:title", :content => "#{@page_title || "Starzucks Coffee"}" }
     %meta{ :property => "og:type", :content => "cafe" }
-    %meta{ :property => "og:url", :content => "#{url_for}" }
+    %meta{ :property => "og:url", :content => "#{url_for(:only_path => false)}" }
     %meta{ :property => "og:image", :content => "#{root_url}#{image_path("assets/logo.square.png")}" }
     %meta{ :property => "og:site_name", :content => "Starzucks" }
     %meta{ :property => "fb:app_id", :content => "#{@app.id}" }
