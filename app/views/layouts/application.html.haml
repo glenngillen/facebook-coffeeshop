@@ -4,10 +4,24 @@
     %title= @page_title || "Starzucks Coffee"
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
-    = javascript_include_tag "https://use.typekit.com/ndx2pqj.js"
     = csrf_meta_tags
     :javascript
-      try{Typekit.load();}catch(e){}
+      TypekitConfig = {
+          kitId: 'ndx2pqj'
+        };
+        (function() {
+          var tk = document.createElement('script');
+          tk.src = '//use.typekit.com/' + TypekitConfig.kitId + '.js';
+          tk.type = 'text/javascript';
+          tk.async = 'true';
+          tk.onload = tk.onreadystatechange = function() {
+            var rs = this.readyState;
+            if (rs && rs != 'complete' && rs != 'loaded') return;
+            try { Typekit.load(TypekitConfig); } catch (e) {}
+          };
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(tk, s);
+        })();
     %meta{ :property => "og:title", :content => "#{@page_title || "Starzucks Coffee"}" }
     %meta{ :property => "og:type", :content => "cafe" }
     %meta{ :property => "og:url", :content => "#{url_for}" }
