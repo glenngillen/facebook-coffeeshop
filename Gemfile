@@ -7,6 +7,7 @@ gem 'compass', :git => 'https://github.com/chriseppstein/compass.git', :branch =
 gem 'mogli'
 gem 'redis'
 gem 'newrelic_rpm'
+gem 'rdiscount'
 
 group :development do
   gem 'ruby-debug19'

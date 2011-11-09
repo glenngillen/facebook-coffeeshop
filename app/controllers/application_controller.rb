@@ -56,7 +56,6 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    require 'ruby-debug'; debugger
     @current_user ||= User.new(Mogli::User.find("me", client))
   end
 

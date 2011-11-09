@@ -7,8 +7,21 @@
   %meta{ :property => "og:type", :content => "#{ENV["FACEBOOK_APP_NAMESPACE"]}:beverage" }
   %meta{ :property => "#{ENV["FACEBOOK_APP_NAMESPACE"]}:category", :content => "#{coffees_url}" }
 
+- content_for :javascript do
+  :javascript
+    function postPress()
+    {
+      FB.api('/me/#{ENV["FACEBOOK_APP_NAMESPACE"]}:press=#{coffees_url}','post',  function(response) {
+        if (!response || response.error) {
+        } else {
+          alert('Post was successful! Action ID: ' + response.id);
+        }
+      });
+    }
+
 %h1= @coffee[:name]
 %h2= @coffee[:price]
 %p= @coffee[:description]
-- form_tag :url => coffee_path(@coffee[:name]), :html => { :method => :put } do
-  = submit_tag "press"
+%form{ :onsubmit => "postPress();" }
+  = button_tag "Order", :onclick => "postPress();"
+//= render :partial => "/shared/activity_button"

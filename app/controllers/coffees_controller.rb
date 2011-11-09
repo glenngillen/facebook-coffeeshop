@@ -14,6 +14,12 @@ class CoffeesController < ApplicationController
       client.post("/me/#{ENV["FACEBOOK_APP_NAMESPACE"]}:press", nil,
                   { :coffee => coffee_url(params[:id])})
     end
+    session[:pressed] ||= []
+    session[:pressed] ||= params[:id]
+    redirect_to coffee_path(params[:id])
+  rescue Mogli::Client::HTTPException => ex
+    session[:pressed] ||= []
+    session[:pressed] ||= params[:id]
     redirect_to coffee_path(params[:id])
   end
 
