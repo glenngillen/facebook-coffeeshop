@@ -4,7 +4,7 @@
     %title= @page_title || "Starzucks Coffee"
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
-    //= javascript_include_tag "//use.typekit.com/ndx2pqj.js"
+    = javascript_include_tag "https://use.typekit.com/ndx2pqj.js"
     = csrf_meta_tags
     :javascript
       try{Typekit.load();}catch(e){}
